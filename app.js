@@ -23,6 +23,9 @@ app.use(hpp());
 //Body parser Implementation
 app.use(bodyparser.json());
 
+//Request Rate Limiting Implementation
+const  limiter=rateLimit({windowMs: 15 * 60 * 1000,max: 3000})// 100 requests per 15 minutes
+app.use(limiter);// 100 requests per 15 minutes
 
 
 
