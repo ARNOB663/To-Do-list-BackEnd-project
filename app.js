@@ -29,3 +29,7 @@ app.use(limiter);// 100 requests per 15 minutes
 
 //MongoDB Connection 
 let URI="mongodb://localhost:27017/Todo"
+let OPTION="{user:'',pass:''}"
+mongoose.connect(URI,JSON.parse(OPTION),()=>{
+    console.log("Connected to MongoDB")
+})
