@@ -20,7 +20,6 @@ app.use(mongoSanitize());
 app.use(xss());
 app.use(hpp());
 
-
 //Body parser Implementation
 app.use(bodyparser.json());
 
@@ -34,3 +33,14 @@ let OPTION="{user:'',pass:''}"
 mongoose.connect(URI,JSON.parse(OPTION),()=>{
     console.log("Connected to MongoDB")
 })
+
+//Routing Implementation
+app.use("/api/v1",router);
+
+
+//Routing Implementation for undefined routes
+app.use("*",(req,res)=>{
+    res.status(404).json({status:"fail",message:"Route not found"})
+})
+
+module.exports = app;
