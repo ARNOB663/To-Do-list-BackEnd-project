@@ -16,7 +16,12 @@ const DataSchema=mongoose.Schema({
     City:{
         type:String,
     },
-
+    UserName:{
+        type:String,
+    },
+    Password:{
+        type:String,
+    },
 
 },{versionKey:false})
 
