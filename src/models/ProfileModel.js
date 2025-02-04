@@ -13,6 +13,9 @@ const DataSchema=mongoose.Schema({
     MobileNumber:{
         type:String,
     },
+    City:{
+        type:String,
+    },
 
 
 },{versionKey:false})
