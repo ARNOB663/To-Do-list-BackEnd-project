@@ -14,6 +14,7 @@ router.post('/UpdateProfile',AuthVerifyMiddleware,ProfileController.UpdateProfil
 
 router.post('/CreateToDoList',AuthVerifyMiddleware,ToDoListController.CreateToDoList)
 router.get('/SelectToDoList',AuthVerifyMiddleware,ToDoListController.SelectToDoList)
+router.post('/UpdateToDoList',AuthVerifyMiddleware,ToDoListController.UpdateToDoList)
 
 
 
