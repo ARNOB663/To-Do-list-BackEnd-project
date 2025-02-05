@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const ProfileModel = require('../models/ProfileModel.js');
+const jwt = require('jsonwebtoken');
 
 exports.CreateProfile = async (req, res) => {
     try {
@@ -19,7 +20,14 @@ exports.UserLogin = async (req, res) => {
         let Password = req.body.Password;
         const data = await ProfileModel.find({ UserName: UserName, Password: Password });
         if (data.length > 0) {
-            res.status(200).json({ status: "success", data: data });
+           // creat auth token
+            let Payload = {
+                exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60),
+                data:data[0] //user data 
+            }
+            let token = jwt.sign(Payload,"SecretKey123");
+
+            res.status(200).json({ status: "success", data: data, token: token });
         } else {
             res.status(401).json({ status: "fail", message: "Invalid Username or Password" });
         }
