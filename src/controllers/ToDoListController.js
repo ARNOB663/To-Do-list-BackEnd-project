@@ -95,7 +95,6 @@ exports.UpdateStatusToDoList = async (req,res)=>{
 }
 
 exports.RemoveToDoList = async (req,res)=>{
-
     try{
          
         let _id = req.body['_id'] 
@@ -111,4 +110,24 @@ exports.RemoveToDoList = async (req,res)=>{
         res.status(400).json({ status: "fail", data: err });
     }
 
+}
+
+exports.SelectToDoByStatus = async (req,res)=>{
+    try{
+        let UserName = req.headers['username'];
+        let ToDoStatus = req.body['ToDoStatus']
+        const data = await ToDoListModel.find({ UserName: UserName,ToDoStatus:ToDoStatus });
+        if (data) {
+            res.status(200).json({ status: "success", data: data });
+        } else {
+            res.status(404).json({ status: "fail", message: "Profile not found" });
+        }
+
+    }
+    catch(err){
+        res.status(400).json({ status: "fail", data: err });
+    }
+     
+    
+    
 }
