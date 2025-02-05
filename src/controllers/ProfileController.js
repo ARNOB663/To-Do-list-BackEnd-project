@@ -13,11 +13,17 @@ exports.CreateProfile = async (req, res) => {
     }
 };
 
-exports.UserLogin = (req, res) => {
-
-   
-    let UserName = req.body.UserName;
-    let Password = req.body.Password
-    res.status(200).json({ status: "success", data:UserName})
-    
+exports.UserLogin = async (req, res) => {
+    try {
+        let UserName = req.body.UserName;
+        let Password = req.body.Password;
+        const data = await ProfileModel.find({ UserName: UserName, Password: Password });
+        if (data.length > 0) {
+            res.status(200).json({ status: "success", data: data });
+        } else {
+            res.status(401).json({ status: "fail", message: "Invalid Username or Password" });
+        }
+    } catch (err) {
+        res.status(400).json({ status: "fail", data: err });
+    }
 };
