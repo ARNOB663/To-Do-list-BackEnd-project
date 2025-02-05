@@ -10,10 +10,8 @@ exports.CreateProfile = async (req, res) => {
     } catch (err) {
 
         res.status(400).json({ status: "fail", data: err });
-        
     }
 };
-
 exports.UserLogin = async (req, res) => {
     try {
         let UserName = req.body.UserName;
@@ -27,7 +25,7 @@ exports.UserLogin = async (req, res) => {
             }
             let token = jwt.sign(Payload,"SecretKey123");
 
-            res.status(200).json({ status: "success", data: data, token: token });
+            res.status(200).json({ status: "success", token: token , data: data});
         } else {
             res.status(401).json({ status: "fail", message: "Invalid Username or Password" });
         }
