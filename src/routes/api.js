@@ -13,6 +13,8 @@ router.get('/SelectProfile',AuthVerifyMiddleware,ProfileController.SelectProfile
 router.post('/UpdateProfile',AuthVerifyMiddleware,ProfileController.UpdateProfile)
 
 router.post('/CreateToDoList',AuthVerifyMiddleware,ToDoListController.CreateToDoList)
+router.get('/SelectToDoList',AuthVerifyMiddleware,ToDoListController.SelectToDoList)
+
 
 
 module.exports = router;
