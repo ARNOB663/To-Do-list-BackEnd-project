@@ -12,12 +12,14 @@ const DataSchema=mongoose.Schema({
     },
     MobileNumber:{
         type:String,
+      
     },
     City:{
         type:String,
     },
     UserName:{
         type:String,
+        unique: true, required: true, index: true 
     },
     Password:{
         type:String,

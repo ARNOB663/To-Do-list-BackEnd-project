@@ -30,10 +30,13 @@ app.use(limiter);// 100 requests per 15 minutes
 //MongoDB Connection 
 let URI="mongodb://localhost:27017/Todo"
 //let OPTION="{user: '',pass: ''}"
-let OPTION = { user: '', pass: '' };
+let OPTION = { user: '', pass: '' ,autoIndex: true};
 async function connectDB() {
-    try {
-        await mongoose.connect(URI, OPTION);
+    try { 
+        
+        await mongoose.connect(URI, {
+            autoIndex: true 
+        });
         console.log("Connected to MongoDB");
     } catch (error) {
         console.error("Error connecting to MongoDB", error);
