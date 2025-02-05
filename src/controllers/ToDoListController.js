@@ -70,3 +70,26 @@ exports.UpdateToDoList = async (req,res)=>{
  }
 
 }
+
+exports.UpdateStatusToDoList = async (req,res)=>{
+  try{
+    let _id = req.body['_id'] 
+    let ToDoStatus = req.body['ToDoStatus']
+    let ToDoUpdateDate = Date.now();
+    let PostBody={
+        ToDoStatus:ToDoStatus,
+        ToDoUpdateDate:ToDoUpdateDate
+    }
+    const data = await ToDoListModel.updateOne({_id:_id},{$set:PostBody},{upsert:true});
+    if(data){
+        res.status(200).json({ status: "update success", data: data });
+    }
+    else{
+        res.status(404).json({ status: "fail", message: "Profile not found" });
+    }
+  }
+  catch(err){
+    res.status(400).json({ status: "fail", data: err });
+  }
+
+}
