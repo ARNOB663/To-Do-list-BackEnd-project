@@ -54,6 +54,14 @@ exports.UpdateProfile = async (req,res)=>{
    try{
       let UserName=req.headers['username'];
       let reqBody=req.body;
+
+    const data=await ProfileModel.findOneAndUpdate({UserName:UserName},reqBody,{new:true});
+    if(data){
+        res.status(200).json({ status: "update success", data: data });
+    }else{
+        res.status(404).json({ status: "fail", message: "Profile not found" });
+    }
+
    }
    catch(err){
        res.status(400).json({ status: "fail", data: err });
