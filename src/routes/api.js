@@ -16,6 +16,7 @@ router.post('/CreateToDoList',AuthVerifyMiddleware,ToDoListController.CreateToDo
 router.get('/SelectToDoList',AuthVerifyMiddleware,ToDoListController.SelectToDoList)
 router.post('/UpdateToDoList',AuthVerifyMiddleware,ToDoListController.UpdateToDoList)
 router.post('/UpdateStatusToDoList',AuthVerifyMiddleware,ToDoListController.UpdateStatusToDoList)
+router.post('/RemoveToDoList',AuthVerifyMiddleware,ToDoListController.RemoveToDoList)
 
 
 module.exports = router;

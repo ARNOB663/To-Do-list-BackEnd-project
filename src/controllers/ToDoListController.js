@@ -93,3 +93,22 @@ exports.UpdateStatusToDoList = async (req,res)=>{
   }
 
 }
+
+exports.RemoveToDoList = async (req,res)=>{
+
+    try{
+         
+        let _id = req.body['_id'] 
+        const data = await ToDoListModel.deleteOne({_id:_id});
+        if(data){
+            res.status(200).json({ status: "delete success", data: data });
+        }
+        else{
+            res.status(404).json({ status: "fail", message: "Profile not found" });
+        }
+    }
+    catch(err){
+        res.status(400).json({ status: "fail", data: err });
+    }
+
+}
