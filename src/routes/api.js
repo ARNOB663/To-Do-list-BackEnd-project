@@ -2,6 +2,7 @@ const express = require('express');
 const ProfileController = require('../controllers/ProfileController.js');
 const router =  express.Router() 
 const AuthVerifyMiddleware = require('../middleware/AuthVerifyMiddleware.js');
+const ToDoListController = require('../controllers/ToDoListController.js')
 
 
 
@@ -10,5 +11,8 @@ router.post('/UserLogin',ProfileController.UserLogin)
 
 router.get('/SelectProfile',AuthVerifyMiddleware,ProfileController.SelectProfile)
 router.post('/UpdateProfile',AuthVerifyMiddleware,ProfileController.UpdateProfile)
+
+router.post('/CreateToDoList',AuthVerifyMiddleware,ToDoListController.CreateToDoList)
+
 
 module.exports = router;

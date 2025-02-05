@@ -2,22 +2,25 @@ const mongoose = require('mongoose');
 
 const DataSchema = mongoose.Schema({
     UserName:{
-         type:string,
+         type:String,
     },
     ToDoSubject:{
-        type:string,
+        type:String,
     },
     ToDoDescription:{
-        type:string,
+        type:String,
     },
     ToDoStatus:{
-        type:string,
-        default:"New"
+        type:String,
     },
-    ToDoDate:{
+    ToDoCreateDate:{
         type:Date,
-        default:Date.now
+    },
+    ToDoUpdateDate:{
+        type:Date,
     }
+    
+
 
 
 },{versionKey:false});
