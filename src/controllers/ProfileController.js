@@ -48,3 +48,16 @@ exports.SelectProfile = async (req, res) => {
         res.status(400).json({ status: "fail", data: err });
     }
 };
+
+
+exports.UpdateProfile = async (req,res)=>{
+   try{
+      let UserName=req.headers['username'];
+      let reqBody=req.body;
+   }
+   catch(err){
+       res.status(400).json({ status: "fail", data: err });
+   }
+
+
+}

@@ -7,12 +7,11 @@ const DataSchema=mongoose.Schema({
   LastName:{
     type:String,
   },
-    EmailAddress:{
+  EmailAddress:{
         type:String,
     },
-    MobileNumber:{
-        type:String,
-      
+  MobileNumber:{
+        type:String,   
     },
     City:{
         type:String,

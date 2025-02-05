@@ -7,7 +7,8 @@ const AuthVerifyMiddleware = require('../middleware/AuthVerifyMiddleware.js');
 
 router.post('/CreateProfile',ProfileController.CreateProfile)
 router.post('/UserLogin',ProfileController.UserLogin)
-router.get('/SelectProfile',AuthVerifyMiddleware,ProfileController.SelectProfile)
 
+router.get('/SelectProfile',AuthVerifyMiddleware,ProfileController.SelectProfile)
+router.post('/UpdateProfil',AuthVerifyMiddleware,ProfileController.UpdateProfile)
 
 module.exports = router;
